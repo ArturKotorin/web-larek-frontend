@@ -18,7 +18,7 @@ export class OrderDeliveryUI extends Form<IOrderDelivery> {
 		this.paymentButtons.forEach((button) => {
 			button.addEventListener('click', (event) => {
 				this.resetButtonStatus();
-				button.classList.add('button_alt-active');
+				this.toggleClass(button, 'button_alt-active', true);;
 				const paymentMethod = (event.target as HTMLButtonElement).name;
 				this.paymentSelection(paymentMethod as PaymentOptions);
 			});
@@ -28,7 +28,7 @@ export class OrderDeliveryUI extends Form<IOrderDelivery> {
 	resetButtonStatus() {
 		if (this.paymentButtons) {
 			this.paymentButtons.forEach((button) => {
-				button.classList.remove('button_alt-active');
+				this.toggleClass(button, 'button_alt-active', false);
 			});
 		}
 	}

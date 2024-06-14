@@ -36,9 +36,9 @@ export class BasketUI extends View<IBasketView> {
 	set products(products: HTMLElement[]) {
 		if (products.length) {
 			products.forEach((product, index) => {
-				const productIndex = product.querySelector('.basket__item-index');
+				const productIndex = product.querySelector('.basket__item-index') as HTMLElement;
 				if (productIndex) {
-					productIndex.textContent = (index + 1).toString();
+					this.setText(productIndex, (index + 1).toString());
 				}
 			});
 			this.listElement.replaceChildren(...products);
@@ -56,6 +56,6 @@ export class BasketUI extends View<IBasketView> {
 	}
 
 	set totalAmount(value: number) {
-		this.setText(this.totalAmountElement, value);
+		this.setText(this.totalAmountElement, `${value} синапсов`);
 	}
 }
